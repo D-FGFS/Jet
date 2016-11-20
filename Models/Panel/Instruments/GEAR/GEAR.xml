@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>GEAR.ac</path>
+  <animation>
+      <type>scale</type>
+  <x-offset>1.5</x-offset>
+  <y-offset>1.5</y-offset>
+  <z-offset>1.5</z-offset>
+  </animation>
+  <animation>
+    <object-name>display.bg</object-name>
+    <object-name>display.bg2</object-name>
+    <object-name>display.off</object-name>
+    <object-name>gearL.up</object-name>
+    <object-name>gearF.up</object-name>
+    <object-name>gearR.up</object-name>
+    <object-name>gearL.transit</object-name>
+    <object-name>gearF.transit</object-name>
+    <object-name>gearR.transit</object-name>
+    <object-name>gearL.down</object-name>
+    <object-name>gearF.down</object-name>
+    <object-name>gearR.down</object-name>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>display.off</object-name>
+      <condition>
+          <less-than>
+              <property>systems/electrical/volts</property>
+              <value>15</value>
+          </less-than>
+      </condition>
+  </animation>
+  <!--Gear DOWN/UP-->
+  <!--UP-->
+  <animation>
+      <type>select</type>
+      <object-name>gearL.up</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear[1]/position-norm</property>
+              <value>0</value>
+          </equals>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearF.up</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear/position-norm</property>
+              <value>0</value>
+          </equals>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearR.up</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear[2]/position-norm</property>
+              <value>0</value>
+          </equals>
+      </condition>
+  </animation>
+  <!--IN TRANSIT-->
+  <animation>
+      <type>select</type>
+      <object-name>gearL.transit</object-name>
+      <condition>
+          <greater-than>
+              <property>gear/gear[1]/position-norm</property>
+              <value>0</value>
+          </greater-than>
+          <less-than>
+              <property>gear/gear[1]/position-norm</property>
+              <value>1</value>
+          </less-than>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearF.transit</object-name>
+      <condition>
+          <greater-than>
+              <property>gear/gear[0]/position-norm</property>
+              <value>0</value>
+          </greater-than>
+          <less-than>
+              <property>gear/gear[0]/position-norm</property>
+              <value>1</value>
+          </less-than>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearR.transit</object-name>
+      <condition>
+          <greater-than>
+              <property>gear/gear[2]/position-norm</property>
+              <value>0</value>
+          </greater-than>
+          <less-than>
+              <property>gear/gear[2]/position-norm</property>
+              <value>1</value>
+          </less-than>
+      </condition>
+  </animation>
+  <!--DOWN-->
+  <animation>
+      <type>select</type>
+      <object-name>gearL.down</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear[1]/position-norm</property>
+              <value>1</value>
+          </equals>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearF.down</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear/position-norm</property>
+              <value>1</value>
+          </equals>
+      </condition>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>gearR.down</object-name>
+      <condition>
+          <equals>
+              <property>gear/gear[2]/position-norm</property>
+              <value>1</value>
+          </equals>
+      </condition>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>gearL.up</object-name>
+    <object-name>gearF.up</object-name>
+    <object-name>gearR.up</object-name>
+    <object-name>gearL.transit</object-name>
+    <object-name>gearF.transit</object-name>
+    <object-name>gearR.transit</object-name>
+    <object-name>gearL.down</object-name>
+    <object-name>gearF.down</object-name>
+    <object-name>gearR.down</object-name>
+    <emission>
+      <red>   0.8 </red>
+      <green> 0.8 </green>
+      <blue>  0.8 </blue>
+    </emission>
+  </animation>
+<!--
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitre</object-name>
+  </animation>-->
+
+  <!-- working for Rembrandt --><!--
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitre</object-name>
+  </effect>-->
+  <!--
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>face</object-name>
+    <object-name>needle100</object-name>
+    <object-name>needle1000</object-name>
+    <object-name>needle10000</object-name>
+    <object-name>needle100.ap</object-name>
+    <object-name>needle1000.ap</object-name>
+    <object-name>needle10000.ap</object-name>
+    <object-name>inhg</object-name>
+    <object-name>inhg.up</object-name>
+    <object-name>inhg.dn</object-name>
+    <object-name>inhgknob</object-name>
+    <object-name>apknob</object-name>
+    <object-name>scrollwheel-inhg</object-name>
+    <condition>
+<and>
+      <property>/controls/electric/battery-switch</property>
+<property>/controls/lighting/instrument-lights</property>
+</and>
+    </condition>
+    <emission>
+      <red>   0.8 </red>
+      <green> 0.8 </green>
+      <blue>  0.8 </blue>
+    </emission>
+  </animation>-->
+<!--GEAR LEVER-->
+  <animation>
+    <type>rotate</type>
+    <object-name>gear.lever</object-name>
+    <property>/controls/gear/gear-down</property>
+    <factor>90</factor>
+    <center>
+      <y-m>0.1013</y-m>
+      <z-m>-0.1536</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>gear.lever</object-name>
+    <visible>1</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-toggle</command>
+    <property>/controls/gear/gear-down</property>
+      </binding>
+    </action>
+  </animation>
+  <!--Compression monitor-->
+  <animation>
+    <type>rotate</type>
+    <object-name>gearcompression.left</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>285</factor>
+    <center>
+      <y-m>0.01606</y-m>
+      <z-m>-0.11416</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>gearcompression.front</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <factor>285</factor>
+    <center>
+      <y-m>0.04124</y-m>
+      <z-m>-0.11416</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>gearcompression.right</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>285</factor>
+    <center>
+      <y-m>0.06384</y-m>
+      <z-m>-0.11416</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <!--Rollspeed monitor-->
+  <animation>
+    <type>rotate</type>
+    <object-name>rollspeed.left</object-name>
+    <property>gear/gear[1]/rollspeed-ms</property>
+    <factor>3.8</factor>
+    <center>
+      <y-m>0.01606</y-m>
+      <z-m>-0.14058</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>rollspeed.front</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor>3.8</factor>
+    <center>
+      <y-m>0.04124</y-m>
+      <z-m>-0.14058</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>rollspeed.right</object-name>
+    <property>gear/gear[2]/rollspeed-ms</property>
+    <factor>3.8</factor>
+    <center>
+      <y-m>0.06384</y-m>
+      <z-m>-0.14058</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  
+  
+  <!--Takeoff Check-->
+  <animation>
+      <type>select</type>
+      <object-name>takeoffthrust</object-name>
+      <object-name>flapstakeoff</object-name>
+      <object-name>doorsclosed</object-name>
+      <object-name>paxsignson</object-name>
+      <object-name>batterychargeok</object-name>
+      <object-name>enginesok</object-name>
+      <condition><and>
+          <greater-than>
+              <property>/engines/engine/n2</property>
+              <value>95</value>
+          </greater-than>
+          <greater-than>
+              <property>/engines/engine[1]/n2</property>
+              <value>95</value>
+          </greater-than>
+      </and>
+      </condition>
+  </animation>
+  <!--Flaps-->
+  <animation>
+    <type>material</type>
+      <object-name>flapstakeoff</object-name>
+    <condition>
+        <or>
+            <greater-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.55</value>
+  </greater-than>
+            <less-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.45</value>
+  </less-than>
+</or>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>flapstakeoff</object-name>
+    <condition>
+        <and>
+            <greater-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.45</value>
+  </greater-than>
+            <less-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.55</value>
+  </less-than>
+</and>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <!--Charge/Fuel-->
+  <animation>
+    <type>material</type>
+      <object-name>batterychargeok</object-name>
+    <condition>
+            <less-than>
+      <property>/consumables/fuel/total-fuel-norm</property>
+      <value>0.1</value>
+  </less-than>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>batterychargeok</object-name>
+    <condition>
+            <greater-than>
+      <property>/consumables/fuel/total-fuel-norm</property>
+      <value>0.1</value>
+  </greater-than>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <!--Engines, check on-->
+  <animation>
+    <type>material</type>
+      <object-name>enginesok</object-name>
+      <condition>
+          <or><not>
+                  <property>/controls/engines/engine/master</property></not>
+              <not>
+                  <property>/controls/engines/engine[1]/master</property></not></or>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>enginesok</object-name>
+    <condition>
+      <property>/controls/engines/engine/master</property>
+      <property>/controls/engines/engine[1]/master</property>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  
+  
+  <!--
+  <animation>
+      <type>select</type>
+      <object-name>flapstakeoff</object-name>
+      <condition><and>
+          <greater-than>
+              <property>/engines/engine/n2</property>
+              <value>95</value>
+          </greater-than>
+          <greater-than>
+              <property>/engines/engine[1]/n2</property>
+              <value>95</value>
+          </greater-than>
+      </and>
+      </condition>
+  </animation>-->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle10000.ap</object-name>
+    <property>/autopilot/settings/target-altitude-ft</property>
+    <factor>0.0036</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+<!--Indicator part-->
+  <animation>
+    <type>rotate</type>
+    <object-name>needle100</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.36</factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle1000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.036</factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle10000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.0036</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>texrotate</type>
+    <object-name>inhg</object-name>
+    <property>instrumentation/altimeter/setting-hpa</property>
+    <interpolation>
+      <entry><ind> 950.00</ind><dep> 90.0</dep></entry>
+      <entry><ind> 975.00</ind><dep> 45.0</dep></entry>
+      <entry><ind>1000.00</ind><dep>  0.0</dep></entry>
+      <entry><ind>1025.00</ind><dep>-45.0</dep></entry>
+      <entry><ind>1050.00</ind><dep>-90.0</dep></entry>
+    </interpolation>
+    <center>
+      <x>0.666</x>
+      <y>0.333</y>
+      <z>0.00</z>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>-1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>inhg.dn</object-name>
+    <visible>0</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.1</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>increase</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>decrease</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>inhg.up</object-name>
+    <visible>0</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.1</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>increase</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>decrease</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
+

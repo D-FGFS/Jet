@@ -1,0 +1,1098 @@
+<?xml version = '1.0' encoding = 'UTF-8' ?>
+<PropertyList>
+
+    <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/ea64/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      var float_2 = self.getNode("sim/multiplay/generic/float[2]", 1);
+      var float_3 = self.getNode("sim/multiplay/generic/float[3]", 1);
+      var float_4 = self.getNode("sim/multiplay/generic/float[4]", 1);
+      var float_5 = self.getNode("sim/multiplay/generic/float[5]", 1);
+
+      var passenger = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+      var passengerstairs = self.getNode("instrumentation/doors/passengerstairs/position-norm", 1);
+      var rearL = self.getNode("instrumentation/doors/rearL/position-norm", 1);
+      var frontR = self.getNode("instrumentation/doors/rearR/position-norm", 1);
+      var frontL = self.getNode("instrumentation/doors/rearL/position-norm", 1);
+      var cockpit = self.getNode("instrumentation/doors/cockpit/position-norm", 1);
+
+      passenger_door.alias(float_0);
+      passengerstairs_door.alias(float_5);
+      rearL_door.alias(float_1);
+      frontR_door.alias(float_2);
+      frontL_door.alias(float_3);
+      cockpit_door.alias(float_4);
+    </load>
+
+    <unload>
+      livery_update.stop();
+      passenger_door.unalias();
+      passengerstairs_door.unalias();
+      rearL_door.unalias();
+      frontR_door.unalias();
+      frontL_door.unalias();
+      cockpit_door.unalias();
+    </unload>
+    </nasal>
+    <path>next.ac</path><!--
+<model>
+<condition>
+		  <property>/sim/rendering/shaders/skydome</property>
+          <property>sim/rendering/shadow-volume</property>
+</condition>
+<path>proppower-shadow.xml</path>
+<offsets><z-m>0.05</z-m></offsets>
+</model>-->
+<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>windows</object-name>
+</effect>
+<effect>
+		<inherits-from>Effects/Glass/interior-glass</inherits-from>
+		<object-name>windows.int</object-name>
+</effect>
+<effect>
+		<inherits-from>Effects/bumpspecreflect</inherits-from>
+		<object-name>body</object-name>
+		<object-name>dooroutside</object-name>
+		<object-name>vstab</object-name>
+		<object-name>hstab</object-name>
+		<object-name>elevator</object-name>
+		<object-name>rudder</object-name>
+		<object-name>geardoorFL1</object-name>
+		<object-name>geardoorFL2</object-name>
+		<object-name>geardoorFR1</object-name>
+		<object-name>geardoorFR2</object-name>
+		<object-name>gearroom</object-name>
+		<object-name>engfix</object-name>
+		<object-name>nacelleL</object-name>
+		<object-name>nacelleR</object-name>
+</effect>
+<effect>
+		<inherits-from>Effects/wingshireflect</inherits-from>
+		<object-name>wing</object-name>
+		<object-name>aileronL</object-name>
+		<object-name>aileronR</object-name>
+		<object-name>flapL</object-name>
+		<object-name>flapR</object-name>
+</effect>
+<!--<effect>
+    <inherits-from>Aircraft/ea64/Models/Effects/interior/c172p-interior</inherits-from>
+          <object-name>cockpit</object-name>
+          <object-name>interior</object-name>
+          <object-name>cockpitseats</object-name>
+          <object-name>seatsR</object-name>
+</effect>-->
+<!--Livery-->
+    <!--<animation>
+      <type>material</type>
+		<object-name>body</object-name>
+		<object-name>door</object-name>
+		<object-name>dooroutside</object-name>
+		<object-name>wingfix</object-name>
+		<object-name>wing</object-name>
+		<object-name>vstab</object-name>
+		<object-name>hstab</object-name>
+		<object-name>spinnerL</object-name>
+		<object-name>spinnerR</object-name>
+		<object-name>propL</object-name>
+		<object-name>propR</object-name>
+		<object-name>propfix1</object-name>
+		<object-name>propfix2</object-name>
+		<object-name>geardoor1Fout</object-name>
+		<object-name>geardoor2Fout</object-name>
+		<object-name>geardoor3Fout</object-name>
+		<object-name>geardoor1Rout</object-name>
+		<object-name>geardoor2Rout</object-name>
+		<object-name>geardoor3Rout</object-name>
+		<object-name>geardoor1Lout</object-name>
+		<object-name>geardoor2Lout</object-name>
+		<object-name>geardoor3Lout</object-name>
+		<object-name>geardoor1F</object-name>
+		<object-name>geardoor2F</object-name>
+		<object-name>geardoor3F</object-name>
+		<object-name>geardoor1R</object-name>
+		<object-name>geardoor2R</object-name>
+		<object-name>geardoor3R</object-name>
+		<object-name>geardoor1L</object-name>
+		<object-name>geardoor2L</object-name>
+		<object-name>geardoor3L</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture</texture-prop>
+      <texture>texture.png</texture>
+</animation>-->
+<!--Livery--><!--
+    <animation>
+      <type>material</type>
+		<object-name>seats</object-name>
+      <property-base>sim/model/livery-seats</property-base>
+      <texture-prop>texture</texture-prop>
+      <texture>seats.png</texture>
+    </animation>-->
+<!--INTERIOR-->
+<!-- <animation>
+  <type>material</type>
+ <object-name>cockpitlights</object-name>
+    <condition>
+<and>
+      <property>/controls/electric/battery-switch</property>
+<property>/controls/lighting/instrument-lights</property>
+</and>
+    </condition>
+  <emission>
+   <red>1</red>
+   <green>1</green>
+   <blue>1</blue>
+  </emission>
+ </animation>
+ <animation>
+  <type>material</type>
+  <object-name>cockpit</object-name>
+		<object-name>seatsR</object-name>
+		<object-name>seatFL1</object-name>
+		<object-name>interior</object-name>
+    <condition>
+<and>
+      <property>/controls/electric/battery-switch</property>
+<property>/controls/lighting/instrument-lights</property>
+</and>
+    </condition>
+  <ambient>
+   <red>1</red>
+   <green>1</green>
+   <blue>1</blue>
+  </ambient>
+  <emission>
+   <red>0.2</red>
+   <green>0.2</green>
+   <blue>0.2</blue>
+  </emission>
+</animation>-->
+<!--Cockpit Doors-->
+ <animation>
+    <type>pick</type>
+    <object-name>cockpitdoorL</object-name>
+    <object-name>cockpitdoorR</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>nasal</command>
+        <script>doors.doorsystem.cockpitexport();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>cockpitdoorL</object-name>
+    <property>instrumentation/doors/cockpit/position-norm</property>
+    <factor> -90 </factor>
+<center>
+<x-m>-5.97498</x-m>
+<y-m>-0.21612</y-m>
+<z-m>-0.61651</z-m>
+</center>
+<axis><z>1</z>
+		</axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>cockpitdoorR</object-name>
+    <property>instrumentation/doors/cockpit/position-norm</property>
+    <factor> 90 </factor>
+<center>
+<x-m>-5.97498</x-m>
+<y-m>0.21612</y-m>
+<z-m>-0.61651</z-m>
+</center>
+<axis><z>1</z>
+		</axis>
+  </animation>
+<!--Panel-->
+  <model>
+    <path>Panel/panel.xml</path>
+    <offsets>
+      <x-m>-12.08573</x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.47666 </z-m>
+    </offsets>
+  </model>
+  <!--Flaps lever-->
+<animation>
+<type>rotate</type>
+<object-name>spoilerlever</object-name>
+<property>/controls/flight/speedbrake</property>
+<factor>60</factor>
+<axis><y>1</y></axis>
+<center>
+<x-m>-6.47145</x-m>
+<z-m>-0.36194</z-m>
+</center>
+</animation>
+  <!--Flaps lever-->
+<animation>
+<type>rotate</type>
+<object-name>flapslever</object-name>
+<property>/surface-positions/flap-pos-norm</property>
+<factor>100</factor>
+<axis><y>1</y></axis>
+<center>
+<x-m>-5.87197</x-m>
+<z-m>-1.38505</z-m>
+</center>
+</animation>
+<!--Flaps-->
+<animation>
+<type>rotate</type>
+<object-name>flapL</object-name>
+<property>/surface-positions/flap-pos-norm</property>
+<factor>-30</factor>
+        <axis>
+			<x1-m>2.36175</x1-m>
+			<y1-m>-1.81388</y1-m>
+			<z1-m>-1.31954</z1-m>
+			<x2-m>2.36175</x2-m>
+			<y2-m>-6.70638</y2-m>
+			<z2-m>-0.99415</z2-m>
+	</axis>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>flapR</object-name>
+<property>/surface-positions/flap-pos-norm</property>
+<factor>30</factor>
+        <axis>
+			<x1-m>2.36175</x1-m>
+			<y1-m>1.81388</y1-m>
+			<z1-m>-1.31954</z1-m>
+			<x2-m>2.36175</x2-m>
+			<y2-m>6.70638</y2-m>
+			<z2-m>-0.99415</z2-m>
+	</axis>
+</animation>
+<!--Throttle lever--><!--
+<animation>
+<type>rotate</type>
+<object-name>throttleL</object-name>
+<property>/controls/engines/engine/throttle</property>
+<condition><not>
+<property>/controls/engines/engine/reverser</property>
+</not></condition>
+<factor>-80</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>throttleL</object-name>
+<property>/controls/engines/engine/throttle</property>
+<condition>
+<property>/controls/engines/engine/reverser</property>
+</condition>
+<factor>20</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>throttleL</object-name>
+<property>/controls/engines/engine/reverser</property>
+<factor>5</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>throttleR</object-name>
+<property>/controls/engines/engine[1]/throttle</property>
+<condition><not>
+<property>/controls/engines/engine[1]/reverser</property>
+</not></condition>
+<factor>-80</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>throttleR</object-name>
+<property>/controls/engines/engine[1]/throttle</property>
+<condition>
+<property>/controls/engines/engine[1]/reverser</property>
+</condition>
+<factor>20</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>throttleR</object-name>
+<property>/controls/engines/engine[1]/reverser</property>
+<factor>5</factor>
+<axis><y>1</y></axis>
+<center>
+      <x-m>-5.87197</x-m>
+      <z-m>-1.40327</z-m>
+</center>
+</animation>-->
+<!---->
+   <!--
+ <animation>
+        <type>select</type>
+        <object-name>propL</object-name>
+<condition><less-than>
+        <property>engines/engine[0]/rpm</property>
+<value>500</value></less-than>
+</condition>
+    </animation> 
+<animation>
+        <type>select</type>
+        <object-name>propblurL</object-name>
+<condition><greater-than>
+        <property>engines/engine[0]/rpm</property>
+<value>450</value></greater-than><less-than>
+        <property>engines/engine[0]/rpm</property>
+<value>900</value></less-than>
+</condition>
+    </animation>
+<animation>
+        <type>select</type>
+        <object-name>propdiscL</object-name>
+<condition><greater-than>
+        <property>engines/engine[0]/rpm</property>
+<value>900</value></greater-than>
+</condition>
+    </animation>
+ -->
+    <animation>
+        <type>spin</type>
+        <object-name>fanL</object-name>
+        <object-name>fanL2</object-name>
+        <property>engines/engine[0]/n2</property>
+        <factor>50</factor>
+        <center>
+            <y-m>-2.10926</y-m>
+            <z-m>-0.09973</z-m>
+        </center>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>spin</type>
+        <object-name>fanR</object-name>
+        <object-name>fanR2</object-name>
+        <property>engines/engine[1]/n2</property>
+        <factor>50</factor>
+        <center>
+            <y-m>2.10926</y-m>
+            <z-m>-0.09973</z-m>
+        </center>
+        <axis>
+            <x>-1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+ 
+
+    <!--Ailerons-->
+<animation>
+<type>rotate</type>
+<object-name>aileronL</object-name>
+<property>/surface-positions/left-aileron-pos-norm</property>
+<factor>-10</factor>
+        <axis>
+			<x1-m>2.58384</x1-m>
+			<y1-m>-7.633</y1-m>
+			<z1-m>-0.90959</z1-m>
+			<x2-m>3.14613</x2-m>
+			<y2-m>-11.14736</y2-m>
+			<z2-m>-0.49372</z2-m>
+	</axis>
+</animation>
+<animation>
+<type>rotate</type>
+<object-name>aileronR</object-name>
+<property>/surface-positions/right-aileron-pos-norm</property>
+<factor>10</factor>
+        <axis>
+			<x1-m>2.58384</x1-m>
+			<y1-m>7.633</y1-m>
+			<z1-m>-0.90959</z1-m>
+			<x2-m>3.14613</x2-m>
+			<y2-m>11.14736</y2-m>
+			<z2-m>-0.49372</z2-m>
+	</axis>
+</animation>
+<!--Rudder-->
+<animation>
+<type>rotate</type>
+<object-name>rudder</object-name>
+<property>/surface-positions/rudder-pos-norm</property>
+<factor>-10</factor>
+        <axis>
+			<x1-m>11.92931</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.44198</z1-m>
+			<x2-m>12.91614</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>2.83452</z2-m>
+	</axis>
+</animation>
+<!--Elevator-->
+    <animation>
+        <type>rotate</type>
+        <object-name>elevator</object-name>
+<property>/surface-positions/elevator-pos-norm</property>
+        <factor>20</factor>
+        <center>
+            <x-m>12.93362</x-m>
+            <z-m>3.00434</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>1</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+<!-- Lights, from CRJ700, thanks to Ryan Miller -->
+    <!--ALS lights from c182s by Gilberto Agostinho, Heiko Schulz-->
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<name>Port nav light</name>
+		<path>Lights/rednav.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<name>Port nav light</name>
+		<path>Lights/greennav.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>-13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Aircraft/EchoAirNext/Models/Effects/light/red-navlight.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+                    <heading-deg>180</heading-deg>
+		</offsets>
+	</model>
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Aircraft/EchoAirNext/Models/Effects/light/green-navlight.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>-13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+                    <heading-deg>180</heading-deg>
+		</offsets>
+	</model>
+        <!--Wing Strobe-->
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Aircraft/EchoAirNext/Models/Effects/light/right-strobe.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<name>Port strobe light</name>
+		<path>Lights/strobe.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>-13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Aircraft/EchoAirNext/Models/Effects/light/left-strobe.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>-13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<name>Starboard strobe light</name>
+		<path>Lights/strobe.xml</path>
+		<offsets>
+                    <x-m>5.54435</x-m>
+                    <y-m>13.50673</y-m>
+                    <z-m>0.1984</z-m>  
+		</offsets>
+	</model>
+        <!--Rear beacon-->
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Effects/light/beacon.xml</path>
+		<offsets>
+			<x-m>12.9026</x-m>
+			<y-m>0</y-m>
+                        <z-m>0</z-m>
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<path>Lights/beacon.xml</path>
+		<offsets>
+			<x-m>12.9026</x-m>
+			<y-m>0</y-m>
+                        <z-m>0</z-m>
+		</offsets>
+	</model>
+        <!--Fuselage Top Beacon-->
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Effects/light/beacon.xml</path>
+		<offsets>
+			<x-m>-0.39488</x-m>
+			<y-m>0</y-m>
+			<z-m>0.5</z-m>
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<path>Lights/beacon.xml</path>
+		<offsets>
+			<x-m>-0.39488</x-m>
+			<y-m>0</y-m>
+			<z-m>0.5</z-m>
+		</offsets>
+	</model>
+        <!--Fuselage bottom beacon-->
+	<model>
+                <condition>
+                    <property>/sim/rendering/shaders/skydome</property>
+                </condition>
+		<path>Effects/light/beacon.xml</path>
+		<offsets>
+			<x-m>-0.68165</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.9</z-m>
+		</offsets>
+	</model>
+	<model>
+            <condition>
+                <not>
+                    <property>/sim/rendering/shaders/skydome</property>
+                    </not>
+            </condition>
+		<name>Bottom beacon</name>
+		<path>Lights/beacon.xml</path>
+		<offsets>
+			<x-m>-0.68165</x-m>
+			<y-m>0</y-m>
+			<z-m>-1.9</z-m>
+		</offsets>
+	</model>
+
+
+<!--####    Gear Animation    ####-->
+<!--Gear position-->
+    <animation>
+        <type>rotate</type>
+        <object-name>gearF</object-name>
+        <object-name>wheelF</object-name>
+        <property>gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>115.11</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>110</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>-12.28864</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-1.50624</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+
+
+
+    <animation>
+        <type>rotate</type>
+        <object-name>gearF</object-name>
+        <object-name>wheelF</object-name>
+        <property>gear/gear[0]/caster-angle-deg</property>
+        <center>
+            <x-m>-12.28864</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-1.50624</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+    </animation>
+
+<!--Gear doors front-->
+<animation>
+        <type>rotate</type>
+        <object-name>geardoorFL1</object-name>
+        <property>gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>1</ind><dep>90.5</dep>
+            </entry>
+        </interpolation>
+        <axis>
+			<x1-m>-12.22229</x1-m>
+			<y1-m>-0.1176</y1-m>
+			<z1-m>-1.78395</z1-m>
+                        <x2-m>-12.73361</x2-m>
+			<y2-m>-0.1176</y2-m>
+			<z2-m>-1.71438</z2-m>
+	</axis>
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>geardoorFR1</object-name>
+        <property>gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>-90.5</dep>
+            </entry>
+            <entry>
+                <ind>1</ind><dep>-90.5</dep>
+            </entry>
+        </interpolation>
+        <axis>
+			<x1-m>-12.22229</x1-m>
+			<y1-m>0.1176</y1-m>
+			<z1-m>-1.78395</z1-m>
+                        <x2-m>-12.73361</x2-m>
+			<y2-m>0.1176</y2-m>
+			<z2-m>-1.71438</z2-m>
+	</axis>
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>geardoorFL2</object-name>
+        <property>gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <axis>
+                        <x1-m>-12.73352</x1-m>
+			<y1-m>-0.3103</y1-m>
+			<z1-m>-1.64877</z1-m>
+			<x2-m>-13.4868</x2-m>
+			<y2-m>-0.3103</y2-m>
+			<z2-m>-1.43934</z2-m>
+	</axis>
+    </animation>
+<animation>
+        <type>rotate</type>
+        <object-name>geardoorFR2</object-name>
+        <property>gear/gear[0]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>-90.5</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>-90.5</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <axis>
+                        <x1-m>-12.73352</x1-m>
+			<y1-m>0.3103</y1-m>
+			<z1-m>-1.64877</z1-m>
+			<x2-m>-13.4868</x2-m>
+			<y2-m>0.3103</y2-m>
+			<z2-m>-1.43934</z2-m>
+	</axis>
+    </animation>
+
+
+ <animation>
+        <type>translate</type>
+        <object-name>wheelF</object-name>
+        <object-name>gearF</object-name>
+        <property>gear/gear[0]/compression-m</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>spin</type>
+        <object-name>wheelF</object-name>
+        <property>gear/gear[0]/rollspeed-ms</property>
+        <factor>10</factor>
+        <center>
+            <x-m>-12.28627</x-m>
+            <y-m>0.0</y-m>
+            <z-m>-2.34685</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+  
+
+<!--Gear position-->
+    <animation>
+        <type>rotate</type>
+        <object-name>gearR</object-name>
+        <object-name>wheelR</object-name>
+        <property>gear/gear[2]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>-91.78</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>-90</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>1.16926</x-m>
+            <y-m>1.79865</y-m>
+            <z-m>-1.33099</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>gearL</object-name>
+        <object-name>wheelL</object-name>
+        <property>gear/gear[1]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>91.78</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>90</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>1.16926</x-m>
+            <y-m>-1.79865</y-m>
+            <z-m>-1.33099</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <!--Gear doors--><!--
+<animation>
+        <type>rotate</type>
+        <object-name>geardoor1L</object-name>
+        <object-name>geardoor1Lout</object-name>
+        <property>gear/gear[1]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>0.9636</x-m>
+            <z-m>-1.0013</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>geardoor2L</object-name>
+        <object-name>geardoor2Lout</object-name>
+        <property>gear/gear[1]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>0.1</ind><dep>-90.5</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>-90.5</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>1.906</x-m>
+            <z-m>-1.0034</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+      <animation>
+        <type>rotate</type>
+        <object-name>geardoor3L</object-name>
+        <object-name>geardoor3Lout</object-name>
+        <property>gear/gear[1]/position-norm</property>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind><dep>90.5</dep>
+            </entry>
+            <entry>
+                <ind>0.9</ind><dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1.0</ind><dep>0</dep>
+            </entry>
+        </interpolation>
+        <center>
+            <x-m>2.8765</x-m>
+            <y-m>-3.0051</y-m>
+            <z-m>-0.9939</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>wheelL</object-name>
+        <object-name>gearL</object-name>
+        <property>gear/gear[1]/compression-m</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>-->
+
+ <animation>
+        <type>translate</type>
+        <object-name>wheelR</object-name>
+        <object-name>gearR</object-name>
+        <property>gear/gear[2]/compression-m</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+ <animation>
+        <type>translate</type>
+        <object-name>wheelL</object-name>
+        <object-name>gearL</object-name>
+        <property>gear/gear[1]/compression-m</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>spin</type>
+        <object-name>wheelL</object-name>
+        <property>gear/gear[1]/rollspeed-ms</property>
+        <factor>10</factor>
+        <center>
+            <x-m>1.21543</x-m>
+            <z-m>-2.34234</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>spin</type>
+        <object-name>wheelR</object-name>
+        <property>gear/gear[2]/rollspeed-ms</property>
+        <factor>10</factor>
+        <center>
+            <x-m>1.21543</x-m>
+            <z-m>-2.34234</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>-1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+ <!-- Passenger door-->
+ <animation>
+    <type>pick</type>
+    <object-name>dooroutside</object-name>
+    <object-name>doorinside</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>  
+      <binding>
+        <command>nasal</command>
+        <script>doors.doorsystem.passengerexport();</script>
+      </binding>
+    </action>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>dooroutside</object-name>
+    <object-name>doorinside</object-name>
+    <property>instrumentation/doors/passenger/position-norm</property>
+    <factor> 140 </factor>
+        <center>
+            <y-m>-0.84435</y-m>
+            <z-m>-1.49368</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+  </animation>
+
+</PropertyList>

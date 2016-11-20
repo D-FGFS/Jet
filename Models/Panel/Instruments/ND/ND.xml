@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>ND.ac</path>
+  <animation>
+      <type>select</type>
+      <object-name>display.off</object-name>
+      <condition>
+          <less-than>
+              <property>systems/electrical/volts</property>
+              <value>15</value>
+          </less-than>
+      </condition>
+  </animation>
+</PropertyList>
+

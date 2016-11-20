@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>SYS.ac</path>
+  <animation>
+      <type>scale</type>
+  <x-offset>0.75</x-offset>
+  <y-offset>0.75</y-offset>
+  <z-offset>0.75</z-offset>
+  </animation>
+
+  <animation>
+    <object-name>display.bg</object-name>
+    <object-name>display.off</object-name>
+    <object-name>engL.rpm</object-name>
+    <object-name>engR.rpm</object-name>
+    <object-name>battery.charge</object-name>
+    <object-name>battend.100</object-name>
+    <object-name>battend.10</object-name>
+    <object-name>battend.1</object-name>
+    <object-name>fuelend.10</object-name>
+    <object-name>fuelend.1</object-name>
+    <object-name>hydrogen.level</object-name>
+    <object-name>fuelcell.power</object-name>
+    <object-name>case</object-name>
+  </animation>
+  <animation>
+      <type>select</type>
+      <object-name>display.off</object-name>
+      <condition>
+          <less-than>
+              <property>/systems/electrical/volts</property>
+              <value>15</value>
+          </less-than>
+      </condition>
+  </animation>
+<!--
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitre</object-name>
+  </animation>-->
+
+  <!-- working for Rembrandt --><!--
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitre</object-name>
+  </effect>-->
+  <!--
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>face</object-name>
+    <object-name>needle100</object-name>
+    <object-name>needle1000</object-name>
+    <object-name>needle10000</object-name>
+    <object-name>needle100.ap</object-name>
+    <object-name>needle1000.ap</object-name>
+    <object-name>needle10000.ap</object-name>
+    <object-name>inhg</object-name>
+    <object-name>inhg.up</object-name>
+    <object-name>inhg.dn</object-name>
+    <object-name>inhgknob</object-name>
+    <object-name>apknob</object-name>
+    <object-name>scrollwheel-inhg</object-name>
+    <condition>
+<and>
+      <property>/controls/electric/battery-switch</property>
+<property>/controls/lighting/instrument-lights</property>
+</and>
+    </condition>
+    <emission>
+      <red>   0.8 </red>
+      <green> 0.8 </green>
+      <blue>  0.8 </blue>
+    </emission>
+  </animation>-->
+<!--Engines part-->
+  <animation>
+    <type>rotate</type>
+    <object-name>engL.rpm</object-name>
+    <property>/engines/engine/n2</property>
+    <factor>2.7</factor>
+    <center>
+      <y-m>-0.08839</y-m>
+      <z-m>0.03292</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>engR.rpm</object-name>
+    <property>/engines/engine[1]/n2</property>
+    <factor>2.7</factor>
+    <center>
+      <y-m>-0.03215</y-m>
+      <z-m>0.03292</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>hydrogen.level</object-name>
+    <property>/consumables/fuel/total-fuel-norm</property>
+    <factor>285</factor>
+    <center>
+      <y-m>-0.03215</y-m>
+      <z-m>-0.04896</z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  <!--Takeoff Check-->
+  <animation>
+      <type>select</type>
+      <object-name>takeoffthrust</object-name>
+      <object-name>flapstakeoff</object-name>
+      <object-name>doorsclosed</object-name>
+      <object-name>paxsignson</object-name>
+      <object-name>batterychargeok</object-name>
+      <object-name>enginesok</object-name>
+      <condition><and>
+          <greater-than>
+              <property>/engines/engine/n2</property>
+              <value>95</value>
+          </greater-than>
+          <greater-than>
+              <property>/engines/engine[1]/n2</property>
+              <value>95</value>
+          </greater-than>
+      </and>
+      </condition>
+  </animation>
+  <!--Flaps-->
+  <animation>
+    <type>material</type>
+      <object-name>flapstakeoff</object-name>
+    <condition>
+        <or>
+            <greater-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.35</value>
+  </greater-than>
+            <less-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.25</value>
+  </less-than>
+</or>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>flapstakeoff</object-name>
+    <condition>
+        <and>
+            <greater-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.25</value>
+  </greater-than>
+            <less-than>
+      <property>/surface-positions/flap-pos-norm</property>
+      <value>0.35</value>
+  </less-than>
+</and>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <!--Charge/Fuel-->
+  <animation>
+    <type>material</type>
+      <object-name>batterychargeok</object-name>
+    <condition>
+            <less-than>
+      <property>/consumables/fuel/total-fuel-norm</property>
+      <value>0.1</value>
+  </less-than>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>batterychargeok</object-name>
+    <condition>
+            <greater-than>
+      <property>/consumables/fuel/total-fuel-norm</property>
+      <value>0.1</value>
+  </greater-than>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <!--Engines, check on-->
+  <animation>
+    <type>material</type>
+      <object-name>enginesok</object-name>
+      <condition>
+          <or><not>
+                  <property>/controls/engines/engine/master</property></not>
+              <not>
+                  <property>/controls/engines/engine[1]/master</property></not></or>
+    </condition>
+    <emission>
+      <red>   1 </red>
+      <green> 0.1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+      <object-name>enginesok</object-name>
+    <condition>
+      <property>/controls/engines/engine/master</property>
+      <property>/controls/engines/engine[1]/master</property>
+    </condition>
+    <emission>
+      <red>   0.1 </red>
+      <green> 1 </green>
+      <blue>  0.1 </blue>
+    </emission>
+  </animation>
+  
+  
+  <!--
+  <animation>
+      <type>select</type>
+      <object-name>flapstakeoff</object-name>
+      <condition><and>
+          <greater-than>
+              <property>/engines/engine/n2</property>
+              <value>95</value>
+          </greater-than>
+          <greater-than>
+              <property>/engines/engine[1]/n2</property>
+              <value>95</value>
+          </greater-than>
+      </and>
+      </condition>
+  </animation>-->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle10000.ap</object-name>
+    <property>/autopilot/settings/target-altitude-ft</property>
+    <factor>0.0036</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+<!--Indicator part-->
+  <animation>
+    <type>rotate</type>
+    <object-name>needle100</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.36</factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle1000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.036</factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle10000</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.0036</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>texrotate</type>
+    <object-name>inhg</object-name>
+    <property>instrumentation/altimeter/setting-hpa</property>
+    <interpolation>
+      <entry><ind> 950.00</ind><dep> 90.0</dep></entry>
+      <entry><ind> 975.00</ind><dep> 45.0</dep></entry>
+      <entry><ind>1000.00</ind><dep>  0.0</dep></entry>
+      <entry><ind>1025.00</ind><dep>-45.0</dep></entry>
+      <entry><ind>1050.00</ind><dep>-90.0</dep></entry>
+    </interpolation>
+    <center>
+      <x>0.666</x>
+      <y>0.333</y>
+      <z>0.00</z>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>-1</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>inhg.dn</object-name>
+    <visible>0</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.1</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>increase</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>decrease</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>inhg.up</object-name>
+    <visible>0</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.1</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>increase</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>decrease</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>27.90</min>
+        <max>31.40</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
+
