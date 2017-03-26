@@ -72,9 +72,6 @@
 		<object-name>engfix</object-name>
 		<object-name>nacelleL</object-name>
 		<object-name>nacelleR</object-name>
-</effect>
-<effect>
-		<inherits-from>Effects/wingshireflect</inherits-from>
 		<object-name>wing</object-name>
 		<object-name>aileronL</object-name>
 		<object-name>aileronR</object-name>

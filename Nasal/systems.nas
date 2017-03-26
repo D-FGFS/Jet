@@ -2,7 +2,7 @@
 #### Syd Adams
 
 
-aircraft.livery.init("Aircraft/EchoAirRegio/Models/Liveries");
+aircraft.livery.init("Aircraft/EchoAirNext/Models/Liveries");
 var FDM ="";
 var tanks=[];
 var N1=[0.0,0.0];

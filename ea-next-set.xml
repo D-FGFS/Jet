@@ -18,16 +18,30 @@
     </weight>
 
     <weight n="1">
-        <name>Passengers, rows 1-6</name>
-        <weight-lb>1320</weight-lb>
-        <max-lb>2000</max-lb>
+        <name>Passengers, rows 1-7</name>
+        <weight-lb>2464</weight-lb> <!-- average 176lb (80kg) per person, mid density: 2/3 seats used: 7 rows @ 2 passengers-->
+        <max-lb>5565</max-lb> <!--maximal 265lb (120kg) per person, 7 rows @ 3 passengers-->
         <min-lb>0</min-lb>
     </weight>
 
     <weight n="2">
-        <name>Passengers, rows 7-12</name>
-        <weight-lb>1600</weight-lb>
-        <max-lb>2500</max-lb>
+        <name>Passengers, rows 8-13</name>
+        <weight-lb>2112</weight-lb> <!-- average 176lb (80kg) per person, mid density: 2/3 seats used: 6 rows @ 2 passengers-->
+        <max-lb>4770</max-lb> <!--maximal 265lb (120kg) per person, 6 rows @ 3 passengers-->
+        <min-lb>0</min-lb>
+    </weight>
+
+    <weight n="3">
+        <name>Passengers, rows 14-19</name>
+        <weight-lb>2112</weight-lb> <!-- average 176lb (80kg) per person, mid density: 2/3 seats used: 6 rows @ 2 passengers-->
+        <max-lb>4770</max-lb> <!--maximal 265lb (120kg) per person, 6 rows @ 3 passengers-->
+        <min-lb>0</min-lb>
+    </weight>
+
+    <weight n="3">
+        <name>Baggage</name>
+        <weight-lb>1254</weight-lb> <!--average around 33lbs (15kg) baggage per person, 38 (2/3) passengers-->
+        <max-lb>3762</max-lb> <!--maximal around 66lbs (30kg) baggage per person, 57 (full) passengers-->
         <min-lb>0</min-lb>
     </weight>
     <!--<engines>

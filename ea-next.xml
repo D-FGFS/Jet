@@ -39,7 +39,7 @@ Gary Neely "Buckaroo", May 2015
 
 -->
 
-<!--Mass is significantly than the ERJ145 due to use of advanced carbon fiber materials-->
+<!--Mass is significantly lower than the ERJ145 due to use of advanced carbon fiber materials-->
 <airplane mass="20758" version="YASIM_VERSION_CURRENT">
 
 
@@ -62,10 +62,11 @@ Using the given weights, the solution is using a total weight of 37983 lbs + fue
   <control-setting axis="/controls/engines/engine[1]/throttle-internal" value="0.2"/>
   <control-setting axis="/controls/flight/flaps" value="1.0"/>
   <control-setting axis="/controls/gear/gear-down" value="1"/>
-  <solve-weight idx="0" weight="1800"/>
-  <solve-weight idx="1" weight="6000"/>
-  <solve-weight idx="2" weight="1800"/>
-  <solve-weight idx="3" weight="625"/>
+  <solve-weight idx="0" weight="360"/>
+  <solve-weight idx="1" weight="2464"/>
+  <solve-weight idx="2" weight="2112"/>
+  <solve-weight idx="3" weight="2112"/>
+  <solve-weight idx="4" weight="1254"/>
 </approach>
 
 <cruise speed="470" alt="37000" fuel="0.6">
@@ -73,10 +74,11 @@ Using the given weights, the solution is using a total weight of 37983 lbs + fue
   <control-setting axis="/controls/engines/engine[1]/throttle-internal" value="0.95"/>
   <control-setting axis="/controls/flight/flaps" value="0"/>
   <control-setting axis="/controls/gear/gear-down" value="0"/>
-  <solve-weight idx="0" weight="1800"/>
-  <solve-weight idx="1" weight="6000"/>
-  <solve-weight idx="2" weight="1800"/>
-  <solve-weight idx="3" weight="625"/>
+  <solve-weight idx="0" weight="360"/>
+  <solve-weight idx="1" weight="2464"/>
+  <solve-weight idx="2" weight="2112"/>
+  <solve-weight idx="3" weight="2112"/>
+  <solve-weight idx="4" weight="1254"/>
 </cruise>
 
 
@@ -86,10 +88,11 @@ has a fairly narrow balance range. It is not uncommon for passengers in the firs
 three rows to be asked to move in order to re-distribute weight.
 These positions are simple estimates.
 -->
-<weight x="7.5"    y="0" z="-0.75" mass-prop="/sim/weight[0]/weight-lb"/> <!-- First three rows -->
-<weight x="-0.483" y="0" z="-0.75" mass-prop="/sim/weight[1]/weight-lb"/> <!-- middle rows -->
-<weight x="-3.8"   y="0" z="-0.75" mass-prop="/sim/weight[2]/weight-lb"/> <!-- Last three rows -->
-<weight x="-7.5"   y="0" z="-0.75" mass-prop="/sim/weight[3]/weight-lb"/> <!-- baggage -->
+<weight x="7.5"    y="0" z="-0.75" mass-prop="/sim/weight[0]/weight-lb"/> <!-- Crew -->
+<weight x="6.8" y="0" z="-0.8" mass-prop="/sim/weight[1]/weight-lb"/> <!-- First 7 rows -->
+<weight x="-4"   y="0" z="-0.8" mass-prop="/sim/weight[2]/weight-lb"/> <!-- Middle 6 rows -->
+<weight x="0.0"   y="0" z="-0.8" mass-prop="/sim/weight[3]/weight-lb"/> <!-- Last 6 rows -->
+<weight x="-7"   y="0" z="-0.8" mass-prop="/sim/weight[4]/weight-lb"/> <!-- Baggage -->
 
 
 <cockpit x="11" y="0.4" z="-0.1"/>
@@ -244,25 +247,15 @@ The EA-Next uses two electric-driven double-prop coat engines. They are simulate
      <control-speed control="REVERSE_THRUST" transition-time="1.5"/>
 </jet>
 
-<!--A pushback truck is currently not implemented through actually unnecessary because the DWT(direct wheel thrusting system) does everything-->
-<!--Pushback/direct wheel thruster-->
-	<thruster x="12.652"  y="0" z="-2.68319" vx="1" vy="0" vz="0" thrust="1800">
+<!--A pushback truck is currently not implemented because of being unnecessary because of the DWT(direct wheel thrusting system) doing everything-->
+<!--Direct Wheel Thruster-->
+	<thruster x="12.652"  y="0" z="-2.68319" vx="1" vy="0" vz="0" thrust="2000">
 		<control-input axis="/sim/model/pushback/force" control="THROTTLE"/>
 	</thruster>
-	<thruster x="12.652"  y="0" z="-2.68319" vx="-1" vy="0" vz="0" thrust="1800">
+	<thruster x="12.652"  y="0" z="-2.68319" vx="-1" vy="0" vz="0" thrust="2000">
 		<control-input axis="/sim/model/pushback/force-rvs" control="THROTTLE"/>
 	</thruster>
-<!-- Buck notes:
-Transition time of gear is currently unknown, 7 secs is a guess.
-Actual compressions are unknown, using the modeler's guess.
-
-Note that the model has the main gear deployed more than half a meter too far back.
-Even without good diagrams, it's evident from photos that the tires are a full tire diameter
-forward of the wing trailing edge. Position should be about 0.55 forward, more or less.
-old: x=-1.662, new: x=-1.112
-The model and animations should be changed to correct this.
--->
-
+        
 <!-- nose -->
 <gear x="12.652"  y="0" z="-2.68319"
       compression="0.2" 
