@@ -3,7 +3,7 @@
 
     <nasal>
     <load>
-      var livery_update = aircraft.livery_update.new("Aircraft/ea64/Models/Liveries", 10);
+      var livery_update = aircraft.livery_update.new("Aircraft/Jet/Models/Liveries", 10);
 
       var self = cmdarg();
 
