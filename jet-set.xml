@@ -2,13 +2,13 @@
 
 <PropertyList include="ea-next-base.xml">
     <sim>
-        <description>EchoAir Next</description>
+        <description>Jet</description>
         
          <flight-model>yasim</flight-model>
-        <aero>ea-next</aero>
+        <aero>jet</aero>
         <fuel-fraction>0.5</fuel-fraction>
         <startup>
-            <splash-texture>Aircraft/EchoAirNext/splash.png</splash-texture>
+            <splash-texture>Aircraft/Jet/splash.png</splash-texture>
         </startup>
    <weight n="0">
         <name>Crew</name>
@@ -116,7 +116,7 @@
       <file>Nasal/doors.nas</file>
     </doors>
         <systems>
-            <file>Aircraft/EchoAirNext/Models/Panel/Instruments/ND/ND.nas</file>
+            <file>Aircraft/Jet/Models/Panel/Instruments/ND/ND.nas</file>
             <file>Nasal/Electrical.nas</file>
             <file>Nasal/systems.nas</file>
             <file>Nasal/light.nas</file>
