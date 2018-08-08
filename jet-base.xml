@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <!--
 ************************************************************************
-Beechcraft B1900D
-started July 2004 Syd Adams
-adapted for EchoAir 64 "Scorpion" by D-ECHO
-adapted for EchoAir next by D-ECHO
 ************************************************************************
 -->
 
@@ -12,7 +8,7 @@ adapted for EchoAir next by D-ECHO
     <sim>
         
         <status>developement</status>
-        <author>D-ECHO (for more, see README)</author>
+        <author>D-FGFS</author>
 
   
         <rating>
@@ -25,7 +21,7 @@ adapted for EchoAir next by D-ECHO
             <path>Systems/instrumentation.xml</path>
         </instrumentation>   
         <systems>
-            <path>Aircraft/EchoAirNext/Systems/systems.xml</path>
+            <path>Aircraft/Jet/Systems/systems.xml</path>
             <electrical>
                 <path></path>
             </electrical>
@@ -62,7 +58,7 @@ adapted for EchoAir next by D-ECHO
         </engines>
 
     <model>
-        <path>Aircraft/EchoAirNext/Models/next.xml</path>
+        <path>Aircraft/Jet/Models/jet.xml</path>
         <livery>
             <file type="string">EAG</file>
         </livery>
@@ -214,7 +210,7 @@ adapted for EchoAir next by D-ECHO
     <menubar>
         <default>
             <menu n="10">
-                <label>EchoAir next</label>
+                <label>Jet</label>
                 <enabled type="bool">true</enabled>
                 <item>
                     <label>Autostart</label>
